@@ -11,8 +11,67 @@ body,
   width: 100%;
 }
 
+.app {
+  height: 100vh;
+  background-color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+.app.dark {
+  background-color: #1a1a1a;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.app.dark .app-header {
+  border-bottom-color: #333;
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.app.dark .app-header h1 {
+  color: #e0e0e0;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05);
+  border-color: #999;
+}
+
+.app.dark .theme-toggle {
+  border-color: #555;
+}
+
+.app.dark .theme-toggle:hover {
+  border-color: #777;
+}
+
 main {
-  height: 100%;
+  height: calc(100vh - 80px);
   width: 100%;
   padding: 1.5rem;
   display: flex;
@@ -29,6 +88,12 @@ main .right {
 main .left {
   background-color: #000000;
   position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.app.light main .left {
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
 }
 
 .left .code,
@@ -39,6 +104,14 @@ main .left {
   margin: 0;
   border-radius: 0.7rem;
   background-color: #0c0c0c;
+  transition: background-color 0.3s ease;
+}
+
+.app.light .left .code,
+.app.light .code pre,
+.app.light .code pre code {
+  background-color: #ffffff;
+  color: #333;
 }
 
 main .left .review {
@@ -52,12 +125,107 @@ main .left .review {
   cursor: pointer;
   user-select: none;
   border-radius: 0.7rem;
+  transition: all 0.3s ease;
 }
 
+.main .left .review:hover {
+  background-color: rgb(200, 200, 255);
+}
+
+.app.light main .left .review {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.app.light main .left .review:hover {
+  background-color: #0056b3;
+}
 
 main .right {
   background-color: #343434;
   padding: 1rem 2rem;
   font-size: 1.5rem;
   overflow: auto;
+  color: #e0e0e0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app.light main .right {
+  background-color: #ffffff;
+  color: #333;
+  border: 1px solid #e0e0e0;
+}
+
+main .right h1,
+main .right h2,
+main .right h3,
+main .right h4,
+main .right h5,
+main .right h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: inherit;
+}
+
+main .right p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+main .right code {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.app.light main .right code {
+  background-color: #f1f3f4;
+  color: #333;
+}
+
+main .right pre {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.app.light main .right pre {
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+}
+
+main .right ul,
+main .right ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+main .right li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  main .left,
+  main .right {
+    height: 50vh;
+    flex-basis: auto;
+  }
+
+  .app-header {
+    padding: 1rem;
+  }
+
+  .app-header h1 {
+    font-size: 1.2rem;
+  }
 }
