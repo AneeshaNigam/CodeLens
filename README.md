@@ -11,34 +11,6 @@ CodeLens is an AI-based code review tool that analyzes JavaScript code and provi
 - Dark and light theme toggle with persistence
 - Modular backend architecture: Routes, Controllers, Services
 
-## Project Structure
-
-### Backend
-```
-backend/
-│ app.js
-│ server.js
-│ package.json
-└── src/
-    ├── controllers/
-    │   └── ai.controller.js
-    ├── routes/
-    │   └── ai.routes.js
-    └── services/
-        └── ai.service.js
-```
-
-### Frontend
-```
-frontend/
-│ App.js
-│ package.json
-├── public/
-└── src/
-    ├── assets/
-    └── components and styles
-```
-
 ## How It Works
 
 1. User enters code into the editor.
@@ -131,3 +103,4 @@ Response:
 ## Author
 
 Developed by Aneesha Nigam.
+
