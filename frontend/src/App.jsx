@@ -26,16 +26,26 @@ function App() {
     localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
   }, [isDarkMode]);
 
-  async function reviewCode() {
-    try {
-      const response = await axios.post("http://localhost:3000/ai/get-review", {
-        code,
-      });
-      setReview(response.data);
-    } catch (err) {
-      console.error("Error fetching review:", err);
-    }
+async function reviewCode() {
+  try {
+    const token = localStorage.getItem("token");  // assuming you store it here
+
+    const response = await axios.post(
+      "http://localhost:5000/ai/get-review",
+      { code },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+
+    setReview(response.data);
+  } catch (err) {
+    console.error("Error fetching review:", err);
   }
+}
+
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
